@@ -5,7 +5,7 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-perfix var ="*"
+var perfix = '*';
 
 client.on('message', msg => {
   if (msg.content === 'ping') {
