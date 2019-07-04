@@ -95,6 +95,15 @@ client.on('message', message => {
   }
 }
 });
+//
+
+client.on("guildMemberAdd", member => {
+  member.createDM().then(function (channel) {
+  return channel.send(`:rose: Welcome To DRG CLAN Server :rose: 
+:crown:اسم العضو  ${member}:crown:  
+انت العضو رقم ${member.guild.memberCount} `) 
+}).catch(console.error)
+})
 
 
 
