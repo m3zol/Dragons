@@ -58,7 +58,7 @@ message.channel.send("`Error`:" + Julian)
 //
 client.on('message', async message => {
   let args = message.content.slice(3);
-  if(message.content.startsWith('D*bc')) {
+  if(message.content.startsWith('D*b')) {
     if(!message.guild.members.get(message.author.id).hasPermission('ADMINISTRATOR')) return message.channel.send('Required Administrator Permission')
        message.guild.members.forEach(m => {
       
