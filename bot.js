@@ -10,5 +10,9 @@ client.on('message', msg => {
     msg.reply('Pong!');
   }
 });
+//
+client.on('ready', () => {
+  client.user.setGame(` DRG CLAN FOR EVER `,'https://www.twitch.tv/v5bz');
+});
 
 client.login(process.env.BOT_TOKEN);
