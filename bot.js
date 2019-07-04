@@ -84,6 +84,17 @@ client.on('message',  message => {
     message.reply(" كفايا قلة أدب بقا ي حبيبي 😠 ").then(msg => {msg.delete(5000)});;
   };
 });
+//
+
+client.on('message', message => {
+  if(message.content.includes('discord.gg')){
+                                          if(!message.channel.guild) return message.reply('** advertising me on DM ? 🤔   **');
+      if (!message.member.hasPermissions(['ADMINISTRATOR'])){
+      message.delete()
+  return message.reply(`** ممنوع نشر لينكات ي حبيبي :angry: **`)
+  }
+}
+});
 
 
 
