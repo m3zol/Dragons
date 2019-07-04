@@ -37,28 +37,24 @@ client.on('message', message => {
     }
 });
 //
-client.on("message", message =>
-          {
-      if(!say[message.guild.id]) say[message.guild.id] = {
-        say: 'say'
-        }
-  if(message.content.startsWith( "*D*say" ) || message.content.startsWith(say[message.guild.id].say)) {
-    var args = message.content.split(" ").slice(1).join(" ")
-    message.channel.send(args)
-  }});
 client.on("message", message => {
-if(message.content.startsWith(prefix + 'set-say')) {
-  var args = message.content.split(" ").slice(1).join(" ")
-    if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**Sorry But You Dont Have Permission** `MANAGE_GUILD`' );
-    if(!say[message.guild.id]) say[message.guild.id] = {
-        say: 'say'
-        }
-        message.channel.send(`**SET THE SAY COMMAND TO ${args}**`), say[message.guild.id].say = args
-        fs.writeFile("./say.json", JSON.stringify(say), (err) => {
-            if (err) console.error(err)
-        })
-}
-})
+  if(message.content.startsWith("D*embed")) {
+    
+
+var color = message.content.split(" ")[1];
+  var text = message.content.split(" ").slice(2);
+    var tt = text.join(" ")
+  if(!color) return message.reply("يجب كتابة لون الامبد الذي تريده");
+    if(!tt) return message.reply("يجب كتابة كلام لتكراره");
+  let embed = new Discord.RichEmbed()
+  .setColor(color)
+  .setDescription(tt)
+  message.channel.send(embed).catch(Julian =>{console.log('`Error`: ' + Julian);
+message.channel.send("`Error`:" + Julian)
+    })
+  }
+  });
+
 //
 
 
