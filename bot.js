@@ -5,10 +5,9 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-var perfix = '*';
 
 client.on('message', msg => {
-  if (msg.content === 'ping') {
+  if (msg.content === 'D*ping') {
     msg.reply('Pong!');
   }
 });
@@ -18,7 +17,7 @@ client.on('ready', () => {
 });
 //
 client.on('message', message => {
-  if(message.content.split(' ')[0] == `${prefix}kick`){
+  if(message.content.split(' ')[0] == `D*kick`){
   if(!message.guild || message.author.bot) return undefined;
       if(!message.member.hasPermission('KICK_MEMBERS')) return message.channel.send(':no_entry: | You dont have **KICK_MEMBERS** Permission!');
       if(!message.guild.member(client.user).hasPermission('KICK_MEMBERS')) return message.channel.send(':no_entry: | I dont have **KICK_MEMBERS** Permission!');
