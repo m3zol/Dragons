@@ -1,6 +1,0 @@
-token=NTk1NzAxNzY5NDAxNjYzNTU2.XR0h8A.LPR9kLeY-i7jGpybrhUKnrfxFCw
-owner=350814853256052737
-prefix=*
-game=DRG CLAN For Ever
-stayinchannel=true
-songinstatus=false
