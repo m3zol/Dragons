@@ -7,8 +7,8 @@ client.on('ready', () => {
 
 
 client.on('message', msg => {
-  if (msg.content === 'D*ping') {
-    msg.reply('Pong!');
+  if (msg.content === 'drg') {
+    msg.reply('`` يقلبآاآى :heart_eyes::drooling_face: ``');
   }
 });
 //
