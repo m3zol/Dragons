@@ -8,7 +8,7 @@ client.on('ready', () => {
 
 client.on('message', msg => {
   if (msg.content === 'drg') {
-    msg.reply('`` يقلبآاآى  ``');
+    msg.reply('`` يقلبآاآى:hearts:  ``');
   }
 });
 //
