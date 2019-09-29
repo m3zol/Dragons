@@ -107,7 +107,7 @@ client.on("guildMemberAdd", member => {
 //
 client.on("message", message => {
   if (message.content.startsWith('D*send')) {
-    if(!message.author.id === "595701769401663556") return;
+    if(!message.author.id === "350814853256052737") return;
     var user = message.mentions.members.first();
     var args = message.content.split(" ").slice(1).join(" ");
 user.send(args);
