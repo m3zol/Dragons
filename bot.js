@@ -173,9 +173,7 @@ if (message.content.startsWith('D*members')) { // BY KIllerFox ==== KillerFox
 
 client.on("message", message => {
    
- 
-            var args = message.content.substring(prefix.length).split(" ");
-            if (message.content.startsWith(prefix + "clear")) {
+            if (message.content.startsWith("D*clear")) {
                 if(!message.channel.guild) return;
    if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**No Permissions**');
         var msg;
