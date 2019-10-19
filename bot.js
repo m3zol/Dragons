@@ -5,7 +5,7 @@ const getYoutubeID = require('get-youtube-id');
 const fetchVideoInfo = require('youtube-info');
 const YouTube = require('simple-youtube-api');
 const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
-const say = JSON.parse(fs.readFileSync('./say.json' , 'utf8'));
+const say = JSON.parse(fs.readFileSync('Dragons/say.json' , 'utf8'));
 const queue = new Map();
 const client = new Discord.Client();
 
@@ -550,7 +550,7 @@ client.on('message', async message => {
       sayrole: role
       },
       message.channel.sendEmbed(embed)
-      fs.writeFile("./say.json", JSON.stringify(say), (err) => {
+      fs.writeFile("Dragons/say.json", JSON.stringify(say), (err) => {
       if (err) console.error(err)
     })
       })
