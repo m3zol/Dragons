@@ -513,30 +513,7 @@ client.on('message', async message => {
           errors: ['time']
         })
    
-        .then(collected => {
-            collected.first().delete();
-            role = collected.first().content;
-            let replymsg;
-            msg.edit(':scroll: **| Now Please Type The Answer If He Dont Have The Required Role ... :pencil2: **').then(msg => {
-     
-                message.channel.awaitMessages(filter, {
-                  max: 1,
-                  time: 90000,
-                  errors: ['time']
-                })
-                .then(collected => {
-                    collected.first().delete();
-                    replymsg = collected.first().content;
-                    msg.edit('✅ **| Successfully Setup !...  **').then(msg => {
-       
-                      message.channel.awaitMessages(filter, {
-                        max: 1,
-                        time: 90000,
-                        errors: ['time']
-                      })
-    })
-   })
- })
+        
 })
    }})
    
