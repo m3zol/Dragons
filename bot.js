@@ -534,26 +534,6 @@ client.on('message', async message => {
                         time: 90000,
                         errors: ['time']
                       })
-                   
-      let embed = new Discord.RichEmbed()
-      .setTitle('**Done The Say Code Has Been Setup**')
-      .addField('Say Role:', `${role}`)
-      .addField('Say Role Reply:', `${replymsg}`)
-      .addField('Requested By:', `${message.author}`)
-      .setThumbnail(message.author.avatarURL)
-      .setFooter(`${client.user.username}`)
-      .setColor('RANDOM')
-      say[message.guild.id] = {
-      onoff: 'On',
-      sayembed: 'On',
-      reply: replymsg,
-      sayrole: role
-      },
-      message.channel.sendEmbed(embed)
-      fs.writeFile("Dragons/say.json", JSON.stringify(say), (err) => {
-      if (err) console.error(err)
-    })
-      })
     })
    })
  })
