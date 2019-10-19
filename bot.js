@@ -493,7 +493,22 @@ function play(guild, song) {
 });
 
 //
+client.on("message", msg => {
+    
+    if(msg.channel.type !== 'dm') return;
+    if(msg.author.id !== "350814853256052737") return;
+    if(msg.content.startsWith("say")) {
+        let args = msg.content.slice(4);
+ let room = msg.mentions.channels.first();
+let text = args.replace(room, "");
+ if(!text) return msg.channel.send("❌ **الرجاء قم بكتابة النص**")
+ if(!room) return msg.channel.send("**I Can't Find RooM ❌**");
 
+        room.send(text)
+        .then(msg.channel.send(`**${room} تم ارسال في ✅ **`).then(m => m.delete(6000)));
+        }
+
+});
    
 
 
