@@ -505,16 +505,7 @@ client.on('message', async message => {
        message.delete(4500);
     });
    
-    message.channel.send(':pencil: **| Please Type The Role Required To Type The Say Command ... :pencil2: **').then(msg => {
- 
-        message.channel.awaitMessages(filter, {
-          max: 1,
-          time: 90000,
-          errors: ['time']
-        })
-   
-        
-})
+    
    }})
    
    
