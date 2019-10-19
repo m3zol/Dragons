@@ -494,20 +494,7 @@ function play(guild, song) {
 });
 
 //
-client.on('message', async message => {
-    let messageArray = message.content.split(" ");
-   if(message.content.startsWith("setSay")) {
-    let filter = m => m.author.id === message.author.id;
-    let role;
- 
-    if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send('You don\'t have permission').then(msg => {
-       msg.delete(4500);
-       message.delete(4500);
-    });
-   
-    
-   }})
-   
+
    
 
 
