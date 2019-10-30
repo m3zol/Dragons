@@ -111,63 +111,7 @@ client.on("message", message => {
     var args = message.content.split(" ").slice(1).join(" ");
 user.send(args);
   }});
-//
-client.on('message', message => {
-if (message.content.startsWith('D*members')) { // BY KIllerFox ==== KillerFox
-    let pages = [`**
-:green_heart: online:   ${message.guild.members.filter(m=>m.presence.status == 'online').size}
-:heart:  dnd:       ${message.guild.members.filter(m=>m.presence.status == 'dnd').size}
-:yellow_heart:  idle:     ${message.guild.members.filter(m=>m.presence.status == 'idle').size}
-:diamond_shape_with_a_dot_inside:   membersCount:  ${message.guild.memberCount - message.guild.members.filter(m=>m.user.bot).size}
-:bulb: bots: ${message.guild.members.filter(m=>m.user.bot).size} **
-`,` **
-:green_heart: المتواجدين :   ${message.guild.members.filter(m=>m.presence.status == 'online').size}
-:heart:  الخاملين :       ${message.guild.members.filter(m=>m.presence.status == 'dnd').size}
-:yellow_heart:  مشغولين :     ${message.guild.members.filter(m=>m.presence.status == 'idle').size}
-:diamond_shape_with_a_dot_inside:   عدد اعضاء :  ${message.guild.memberCount - message.guild.members.filter(m=>m.user.bot).size}
-:bulb: عدد البوتات : ${message.guild.members.filter(m=>m.user.bot).size} ** `]
-    let page = 1;
- 
-    let embed = new Discord.RichEmbed() // BY KIllerFox ==== KillerFox
-    .setColor('RANDOM')
-                .setAuthor('Members info ',client.user.avatarURL)
-            .setThumbnail(client.user.avatarURL)
-    .setFooter(`Page ${page} of ${pages.length}`)
-    .setDescription(pages[page-1])
- 
-    message.channel.sendEmbed(embed).then(msg => { // BY KIllerFox ==== KillerFox
- 
-        msg.react('◀').then( r => {
-            msg.react('▶')
- 
- 
-        const backwordsFilters = (reaction, user) => reaction.emoji.name === '◀' && user.id === message.author.id;
-        const forwordsFilters = (reaction, user) => reaction.emoji.name === '▶' && user.id === message.author.id;
- 
- 
-        const backwords = msg.createReactionCollector(backwordsFilters, { time: 20000000});
-        const forwords = msg.createReactionCollector(forwordsFilters, { time: 20000000});
- 
- 
- 
-        backwords.on('collect', r => {
-            if (page === 1) return;
-            page--;
-            embed.setDescription(pages[page-1]);
-            embed.setFooter(`Page ${page} of ${pages.length}`); // BY KIllerFox ==== KillerFox  
-            msg.edit(embed)
-        })
-        forwords.on('collect', r => {
-            if (page === pages.length) return;
-            page++;
-            embed.setDescription(pages[page-1]);
-            embed.setFooter(`Page ${page} of ${pages.length}`); // BY KIllerFox ==== KillerFox
-            msg.edit(embed)
-        })
-        })
-    })
-    }
-});
+
 //
 
 client.on("message", message => {
