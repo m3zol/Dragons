@@ -149,30 +149,14 @@ let text = args.replace(room, "");
 
 });
 //
-client.on("message", message => {
-if(message.content.startsWith("avatar")){
-if(message.author.bot || message.channel.type == "dm") return;
-var avtmnt = message.mentions.users.first();
-var avt = avtmnt || message.author;
-var args = message.content.split(" ")[1];
-if(args == "server"){
-let avts = new Discord.RichEmbed()
-.setColor("#36393e")
-.setAuthor(`Server Avatar`, message.author.avatarURL)
-.setImage(message.guild.iconURL)
-.setFooter(`PrimeBot.`, message.client.user.avatarURL);
-message.channel.send(avts);
-} else {
-let avtm = new Discord.RichEmbed()
-.setColor("#36393e")
-.setAuthor(`${avt.username}, message.author.avatarURL)
-.setImage(avt.avatarURL)
-.setFooter(`PrimeBot.`, message.client.user.avatarURL);
-message.channel.send(avtm);
-}
-}
-});
+client.on('guildMemberAdd', member => {
+  
+  const channel = member.guild.channels.find(ch => ch.name === 'welcome');
 
+  if (!channel) return;
+
+  channel.send(`Welcome to DRG Clan Server, ${member}`);
+});
 
 
 client.login(process.env.BOT_TOKEN);
