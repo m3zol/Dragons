@@ -186,6 +186,23 @@ client.on('ready', () => {//new ready event
       });
   }, 5000);//the rainbow time
 })
+//
+const bannedwords = [
+    "كسمك",
+    "قحبة",
+    "شرموط",
+    "عرص",
+    "discord.gg",
+    "http"
+
+  ];
+
+client.on('message',  message => {
+  if(bannedwords.some(word => message.content.includes(word))) {
+    message.delete()
+    message.reply(" كفايا قلة أدب بقا ي حبيبي 😠 ").then(msg => {msg.delete(5000)});;
+  };
+});
 
 
 client.login(process.env.BOT_TOKEN);
