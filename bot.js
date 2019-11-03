@@ -200,7 +200,7 @@ const bannedwords = [
 client.on('message',  message => {
   if(bannedwords.some(word => message.content.includes(word))) {
     message.delete()
-    message.reply(" كفايا قلة أدب بقا ي حبيبي 😠 ").then(msg => {msg.delete(5000)});;
+    message.reply(" ممنوع نشر لينكات 😁 ").then(msg => {msg.delete(5000)});;
   };
 });
 
