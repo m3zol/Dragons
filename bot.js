@@ -187,21 +187,14 @@ client.on('ready', () => {//new ready event
   }, 5000);//the rainbow time
 })
 //
-const bannedwords = [
-    "كسمك",
-    "قحبة",
-    "شرموط",
-    "عرص",
-    "discord.gg",
-    "http"
-
-  ];
-
-client.on('message',  message => {
-  if(bannedwords.some(word => message.content.includes(word))) {
-    message.delete()
-    message.reply(" ممنوع نشر لينكات 😁 ").then(msg => {msg.delete(5000)});;
-  };
+client.on('message', message => {
+  if(message.content.includes('http')){
+                                          if(!message.channel.guild) return message.reply('** advertising me on DM ? 🤔   **');
+      if (!message.member.hasPermissions(['ADMINISTRATOR'])){
+      message.delete()
+  return message.reply(`** ممنوع نشر لينكات  :angry: **`)
+  }
+}
 });
 
 
