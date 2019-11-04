@@ -195,6 +195,11 @@ client.on('message', message => {
   }
 }
 });
+//
+client.on("guildMemberAdd", (gulid, member) => {
+    const newMemberRole = guild.roles.find(role => role.name === "Family")
+    member.addRole(newMemberRole)//catch(...)
+})
 
 
 client.login(process.env.BOT_TOKEN);
