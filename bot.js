@@ -196,29 +196,42 @@ client.on('message', message => {
 }
 });
 //
-let room1 = '641025486679572510'; // ايدي الروم الاول
-let room2 = '641058660952571934'; // ايدي الروم الثاني
-let room3 = '641058711221174303'; // ايدي الروم الثالث
- 
-client.on('guildMemberAdd', member => {
-    member.guild.channels.get(room1).setName(`Total Users: ${member.guild.memberCount}`);
-    let humans = member.guild.memberCount - member.guild.members.filter(m => m.user.bot).size;
-    member.guild.channels.get(room2).setName(`Total Humans: ${humans}`);
-    let bots = member.guild.members.filter(m => m.user.bot).size - 1;
-    member.guild.channels.get(room3).setName(`Total Bots: ${bots}`);
-});
-client.on('guildMemberRemove', member => {
-    member.guild.channels.get(room1).setName(`Total Users: ${member.guild.memberCount}`);
-    let humans = member.guild.memberCount - member.guild.members.filter(m => m.user.bot).size;
-    member.guild.channels.get(room2).setName(`Total Humans: ${humans}`);
-    let bots = member.guild.members.filter(m => m.user.bot).size - 1;
-    member.guild.channels.get(room3).setName(`Total Bots: ${bots}`);
-});
-//
+let room = "641025486679572510"
+
 client.on("guildMemberAdd", member => {
-    const newMemberRole = member.guild.roles.find(role => role.name === "Family")
-    member.addRole(newMemberRole)//catch(...)
+    let guild = client.channels.get(room).guild.id
+
+    if(member.guild.id != guild) return;
+    client.channels.get(room).setName("Welcome "+member.user.username).then(m=> { setTimeout(() => {
+        client.channels.get(room).setName(member.guild.name+" - "+member.guild.members.size)
+    }, 3000)})
+} )
+
+client.on("guildMemberRemove", member => {
+    let guild = client.channels.get(room).guild.id
+
+    if(member.guild.id != guild) return;
+    client.channels.get(room).setName("Member Left :(").then(m=> { setTimeout(() => {
+        client.channels.get(room).setName(member.guild.name+" - "+member.guild.members.size)
+    }, 3000)})
 })
+
+client.on("voiceStateUpdate" , (oldMember, newMember) => {
+    let guild = client.channels.get(room).guild.id
+
+    if(oldMember.guild.id != guild) return;
+    let newUserChannel = newMember.voiceChannel
+  let oldUserChannel = oldMember.voiceChannel
+  if(oldUserChannel === undefined && newUserChannel !== undefined) {
+        client.channels.get(room).setName("Hi, "+oldMember.user.username).then(m=> { setTimeout(() => {
+            client.channels.get(room).setName(oldMember.guild.name+" - "+oldMember.guild.members.size)
+            }, 3000)})
+  } else if(newUserChannel === undefined){
+        client.channels.get(room).setName("Bye, "+oldMember.user.username).then(m=> { setTimeout(() => {
+            client.channels.get(room).setName(oldMember.guild.name+" - "+oldMember.guild.members.size)
+        }, 3000)})
+  }
+} )
 
 
 client.login(process.env.BOT_TOKEN);
