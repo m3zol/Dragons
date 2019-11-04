@@ -206,19 +206,19 @@ client.on("ready", async () => {
 
           setInterval(() => {
           if(!guild) return;
-         var nameon="Online ♪ : 0" ; // يحب ان تبقي الصفر في الاسم المهم يكون موجود
+         var nameon="Online ♪ :" ; // يحب ان تبقي الصفر في الاسم المهم يكون موجود
           var channel1 = guild.channels.get("641025869418332161");
            channel1.setName(`${nameon.replace(0, guild.members.filter(s => s.presence.status != "offline").size)}`).catch(err => {
               if(err) return;
             });
           },500);
-         var nameoff="Offline ♪ : 0" ; // يحب ان تبقي الصفر في الاسم المهم يكون موجود
+         var nameoff="Offline ♪ :" ; // يحب ان تبقي الصفر في الاسم المهم يكون موجود
           var channel2 = guild.channels.get("641025698152316948");
            channel2 .setName(`${nameoff.replace(0, guild.members.filter(s => s.presence.status == "offline").size)}`).catch(err => {
               if(err) return;
             });
           },500);
-         var members="Members♪ : 0" ; // يحب ان تبقي الصفر في الاسم المهم يكون موجود
+         var members="Members♪ :" ; // يحب ان تبقي الصفر في الاسم المهم يكون موجود
           var channel3 = guild.channels.get("641025486679572510");
            channel3 .setName(`${members.replace(0, guild.memberCount}`).catch(err => {
               if(err) return;
