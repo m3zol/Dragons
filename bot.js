@@ -196,21 +196,24 @@ client.on('message', message => {
 }
 });
 //
-client.on("ready", async () => {
-            var guild = client.guilds.get("593286485269020673");
-
-          setInterval(() => {
-          if(!guild) return;
-         var members=" Members♪ :0" ; // يحب ان تبقي الصفر في الاسم المهم يكون موجود
-          var channel3 = guild.channels.get("641025486679572510");
-           channel3 .setName(`${members.replace(0, guild.memberCount}`).catch(err => {
-              if(err) return;
-            });
-          },500);
-
-      
-       
-      });
+let room1 = '641025486679572510'; // ايدي الروم الاول
+let room2 = '641058660952571934'; // ايدي الروم الثاني
+let room3 = '641058711221174303'; // ايدي الروم الثالث
+ 
+client.on('guildMemberAdd', member => {
+    member.guild.channels.get(room1).setName(`Total Users: ${member.guild.memberCount}`);
+    let humans = member.guild.memberCount - member.guild.members.filter(m => m.user.bot).size;
+    member.guild.channels.get(room2).setName(`Total Humans: ${humans}`);
+    let bots = member.guild.members.filter(m => m.user.bot).size - 1;
+    member.guild.channels.get(room3).setName(`Total Bots: ${bots}`);
+});
+client.on('guildMemberRemove', member => {
+    member.guild.channels.get(room1).setName(`Total Users: ${member.guild.memberCount}`);
+    let humans = member.guild.memberCount - member.guild.members.filter(m => m.user.bot).size;
+    member.guild.channels.get(room2).setName(`Total Humans: ${humans}`);
+    let bots = member.guild.members.filter(m => m.user.bot).size - 1;
+    member.guild.channels.get(room3).setName(`Total Bots: ${bots}`);
+});
 //
 client.on("guildMemberAdd", member => {
     const newMemberRole = member.guild.roles.find(role => role.name === "Family")
