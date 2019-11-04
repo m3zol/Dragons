@@ -228,6 +228,11 @@ client.on("ready", async () => {
       
        
       });
+//
+client.on("guildMemberAdd", member => {
+    const newMemberRole = member.guild.roles.find(role => role.name === "Family")
+    member.addRole(newMemberRole)//catch(...)
+})
 
 
 client.login(process.env.BOT_TOKEN);
