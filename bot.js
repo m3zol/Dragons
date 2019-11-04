@@ -196,18 +196,12 @@ client.on('message', message => {
 }
 });
 //
-client.on("guildMemberAdd", (gulid, member) => {
-    const newMemberRole = guild.roles.find(role => role.name === "Family")
-    member.addRole(newMemberRole)//catch(...)
-})
-//
 client.on("ready", async () => {
             var guild = client.guilds.get("593286485269020673");
 
           setInterval(() => {
           if(!guild) return;
-         
-         var members="Members♪:0" ; // يحب ان تبقي الصفر في الاسم المهم يكون موجود
+         var members=" Members♪ :0" ; // يحب ان تبقي الصفر في الاسم المهم يكون موجود
           var channel3 = guild.channels.get("641025486679572510");
            channel3 .setName(`${members.replace(0, guild.memberCount}`).catch(err => {
               if(err) return;
