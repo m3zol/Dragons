@@ -149,26 +149,31 @@ let text = args.replace(room, "");
 
 });
 //
-client.on('guildMemberAdd', member => {
-  
-  const channel = member.guild.channels.find(ch => ch.name === 'welcome');
-
-  if (!channel) return;
-
-  channel.send(`Welcome to DRG Clan Server, ${member}`);
-});
-//
-client.on('ready', () => {// افنت التشغيل 
-  setInterval(function(){
-      client.guilds.forEach(g => { // فور ايرج تدخل للسيرفرات كلها
-                  var role = g.roles.find('name', 'Rainbow');//Rainbow  اسم الرتبة عشان يسوي ريمبو غيرها اذا تبي
-                  if (role) {
-                      role.edit({color : "RANDOM"});
-                  };
-      });
-  }, 60000);// وقت الريمبو لا تغيرة لانه الوقت المسموح للتغيير
+client.on('message', async message => {
+if(message.author.bot) return;
+let messageArray = message.content.split(" ");
+let cmd = messageArray[0];
+let args = messageArray.slice(1);
+if(cmd === `.link`) {
+let times = 8.64e+7;
+let lastlink = timelink[message.author.id]
+if(lastlink !== null && times - (Date.now() - lastlink) > 0) {
+let time = (times - (Date.now() - lastlink));
+message.channel.send(`**:x: | Error , You Can Get Link Again In \`(${pretty(time, {verbose:true})})\`**`)
+}else {
+timelink[message.author.id] = Date.now();
+message.channel.createInvite({
+thing: true,
+maxUses: 10,
+maxAge: 86400
+}).then(e => {message.author.send(`**» Invite-URL: \`${e.url}\`**`)})
+message.channel.send(`**:white_check_mark: | Done I Have Send Link In You \`DM\`**`)
+fs.writeFile("./timelink.json", JSON.stringify(timelink, null, 2), (err) => {
+if(err) console.log(err);
 })
-
+}
+}
+})
 //
 client.on('message', message => {
   if(message.content.includes('http')){
