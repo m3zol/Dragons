@@ -149,6 +149,7 @@ let text = args.replace(room, "");
 
 });
 //
+var timelink = require("Dragons/timelink.json")
 client.on('message', async message => {
 if(message.author.bot) return;
 let messageArray = message.content.split(" ");
