@@ -196,7 +196,7 @@ client.on('message', message => {
 }
 });
 //
-let room = "641025486679572510"
+let room = "593296593961353246"
 
 client.on("guildMemberAdd", member => {
     let guild = client.channels.get(room).guild.id
