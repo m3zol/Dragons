@@ -16,6 +16,24 @@ client.on('message', msg => {
   }
 });
 //
+client.on('message', message => {
+    if (!message.guild) return;
+    if (message.content.startsWith("link")) {
+
+        message.channel.createInvite({
+        thing: true,
+        maxUses: 5,
+        maxAge: 86400
+    }).then(invite =>
+      message.author.sendMessage(invite.url)
+    )
+  message.channel.send(`** تم أرسال الرابط برسالة خاصة **`)
+
+      message.author.send(`**مدة الرابط : يـوم
+ عدد استخدامات الرابط : 5 **`)
+    }
+});
+//
 client.on('ready', () => {
   client.user.setGame(` DRG CLAN FOR EVER `,'https://www.twitch.tv/v5bz');
 });
