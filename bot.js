@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
 const { Client, Util } = require('discord.js');
+const fs = require('fs');
 const queue = new Map();
 const client = new Discord.Client();
 
