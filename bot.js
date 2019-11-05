@@ -94,8 +94,6 @@ client.on('message',  message => {
     message.reply(" كفايا قلة أدب بقا ي حبيبي 😠 ").then(msg => {msg.delete(5000)});;
   };
 });
-//
-
 
 //
 
@@ -157,90 +155,6 @@ let text = args.replace(room, "");
 
 });
 //
-var timelink = require("./timelink.json")
-client.on('message', async message => {
-if(message.author.bot) return;
-let messageArray = message.content.split(" ");
-let cmd = messageArray[0];
-let args = messageArray.slice(1);
-if(cmd === `.link`) {
-let times = 8.64e+7;
-let lastlink = timelink[message.author.id]
-if(lastlink !== null && times - (Date.now() - lastlink) > 0) {
-let time = (times - (Date.now() - lastlink));
-message.channel.send(`**:x: | Error , You Can Get Link Again In \`(${pretty(time, {verbose:true})})\`**`)
-}else {
-timelink[message.author.id] = Date.now();
-message.channel.createInvite({
-thing: true,
-maxUses: 10,
-maxAge: 86400
-}).then(e => {message.author.send(`**» Invite-URL: \`${e.url}\`**`)})
-message.channel.send(`**:white_check_mark: | Done I Have Send Link In You \`DM\`**`)
-fs.writeFile("./timelink.json", JSON.stringify(timelink, null, 2), (err) => {
-if(err) console.log(err);
-})
-}
-}
-})
-//
-client.on('message', message => {
-  if(message.content.includes('http')){
-                                          if(!message.channel.guild) return message.reply('** advertising me on DM ? 🤔   **');
-      if (!message.member.hasPermissions(['ADMINISTRATOR'])){
-      message.delete()
-  return message.reply(`** ممنوع نشر لينكات  :angry: **`)
-  }
-}
-});
-//
-client.on('message', message => {
-  if(message.content.includes('discord.gg')){
-                                          if(!message.channel.guild) return message.reply('** advertising me on DM ? 🤔   **');
-      if (!message.member.hasPermissions(['ADMINISTRATOR'])){
-      message.delete()
-  return message.reply(`** ممنوع نشر لينكات  :angry: **`)
-  }
-}
-});
-//
-let room = "641025486679572510"
-
-client.on("guildMemberAdd", member => {
-    let guild = client.channels.get(room).guild.id
-
-    if(member.guild.id != guild) return;
-    client.channels.get(room).setName("Welcome "+member.user.username).then(m=> { setTimeout(() => {
-        client.channels.get(room).setName(member.guild.name+" - "+member.guild.members.size)
-    }, 3000)})
-} )
-
-client.on("guildMemberRemove", member => {
-    let guild = client.channels.get(room).guild.id
-
-    if(member.guild.id != guild) return;
-    client.channels.get(room).setName("Member Left :(").then(m=> { setTimeout(() => {
-        client.channels.get(room).setName(member.guild.name+" - "+member.guild.members.size)
-    }, 3000)})
-})
-
-client.on("voiceStateUpdate" , (oldMember, newMember) => {
-    let guild = client.channels.get(room).guild.id
-
-    if(oldMember.guild.id != guild) return;
-    let newUserChannel = newMember.voiceChannel
-  let oldUserChannel = oldMember.voiceChannel
-  if(oldUserChannel === undefined && newUserChannel !== undefined) {
-        client.channels.get(room).setName("Hi, "+oldMember.user.username).then(m=> { setTimeout(() => {
-            client.channels.get(room).setName(oldMember.guild.name+" - "+oldMember.guild.members.size)
-            }, 3000)})
-  } else if(newUserChannel === undefined){
-        client.channels.get(room).setName("Bye, "+oldMember.user.username).then(m=> { setTimeout(() => {
-            client.channels.get(room).setName(oldMember.guild.name+" - "+oldMember.guild.members.size)
-        }, 3000)})
-  }
-} )
-//
 client.on("message", msg => {
       moment.locale('ar_ly');
     let mention = msg.mentions.users.first();
@@ -296,24 +210,7 @@ let emb = new Discord.RichEmbed()
     } 
        }
 });
-//
-client.on('message', message => {
-    if (!message.guild) return;
-    if (message.content.startsWith("link")) {
 
-        message.channel.createInvite({
-        thing: true,
-        maxUses: 5,
-        maxAge: 86400
-    }).then(invite =>
-      message.author.sendMessage(invite.url)
-    )
-  message.channel.send(`** تم أرسال الرابط برسالة خاصة **`)
-
-      message.author.send(`**مدة الرابط : يـوم
- عدد استخدامات الرابط : 5 **`)
-    }
-});
 
 
 
