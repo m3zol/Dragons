@@ -17,8 +17,8 @@ client.on('message', msg => {
 });
 //
 client.on('message', msg => {
-  if (msg.content === 'هيخو') {
-    msg.reply('هيخو هيخو');
+  if (msg.content === 'dr') {
+    msg.reply('هاي');
   }
 });
 //
