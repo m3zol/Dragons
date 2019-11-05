@@ -1,6 +1,7 @@
 const Discord = require('discord.js')
 const { Client, Util } = require('discord.js');
 const fs = require('fs');
+const reps = JSON.parse(fs.readFileSync("./reps.json","utf8"));
 const queue = new Map();
 const client = new Discord.Client();
 
@@ -234,7 +235,6 @@ client.on("voiceStateUpdate" , (oldMember, newMember) => {
   }
 } )
 //
-const reps = JSON.parse(fs.readFileSync("./reps.json","utf8"));
 client.on("message", msg => {
       moment.locale('ar_ly');
     let mention = msg.mentions.users.first();
