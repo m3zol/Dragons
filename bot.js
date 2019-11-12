@@ -113,27 +113,6 @@ user.send(args);
 
 //
 
-client.on("message", message => {
-   
-            if (message.content.startsWith("D*clear")) {
-                if(!message.channel.guild) return;
-   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**No Permissions**');
-        var msg;
-        msg = parseInt();
-     
-      message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
-      message.channel.sendMessage("", {embed: {
-        title: "Done",
-        color: 0x36393e,
-        description: "The Room chat has been Deleted !",
-        footer: {
-          text: "DRG Bot©."
-        }
-      }}).then(msg => {msg.delete(3000)});
-                          }
- 
-     
-});
 
 //
 client.on("message", msg => {
